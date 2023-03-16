@@ -133,14 +133,14 @@ where
                     self.write("<input disabled=\"\" type=\"checkbox\"/>\n")?;
                 }
                 Math(MathDisplay::Inline, text) => {
-                    self.write("<span class=\"math inline\">")?;
+                    self.write("<span class=\"math inline\">$")?;
                     escape_html(&mut self.writer, &text)?;
-                    self.write("</span>")?;
+                    self.write("$</span>")?;
                 }
                 Math(MathDisplay::Block, text) => {
-                    self.write("<div class=\"math block\">")?;
+                    self.write("<div class=\"math block\">$$")?;
                     escape_html(&mut self.writer, &text)?;
-                    self.write("</div>\n")?;
+                    self.write("$$</div>\n")?;
                 }
             }
         }

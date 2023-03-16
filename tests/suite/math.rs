@@ -10,9 +10,9 @@ $\sum_{k=1}^n a_k b_k$: Mathematical expression at head of line
 
 `\` may follow just after the first `$`: $\{1, 2, 3\}$
 "##;
-    let expected = r##"<p>This sentence uses <code>$</code> delimiters to show math inline:  <span class="math inline">\sqrt{3x-1}+(1+x)^2</span>
-<span class="math inline">\sum_{k=1}^n a_k b_k</span>: Mathematical expression at head of line</p>
-<p><code>\</code> may follow just after the first <code>$</code>:  <span class="math inline">\{1, 2, 3\}</span>
+    let expected = r##"<p>This sentence uses <code>$</code> delimiters to show math inline:  <span class="math inline">$\sqrt{3x-1}+(1+x)^2$</span>
+<span class="math inline">$\sum_{k=1}^n a_k b_k$</span>: Mathematical expression at head of line</p>
+<p><code>\</code> may follow just after the first <code>$</code>:  <span class="math inline">$\{1, 2, 3\}$</span>
 "##;
 
     test_markdown_html(original, expected, false);
@@ -25,7 +25,7 @@ fn math_test_2() {
 $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
 "##;
     let expected = r##"<p><strong>The Cauchy-Schwarz Inequality</strong></p>
-<div class="math block">\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)</div>
+<div class="math block">$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$</div>
 "##;
 
     test_markdown_html(original, expected, false);
@@ -62,8 +62,8 @@ fn math_test_5() {
     let original = r##"$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right)
 \left( \sum_{k=1}^n b_k^2 \right)$$
 "##;
-    let expected = r##"<div class="math block">\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right)
-\left( \sum_{k=1}^n b_k^2 \right)</div>
+    let expected = r##"<div class="math block">$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right)
+\left( \sum_{k=1}^n b_k^2 \right)$$</div>
 "##;
 
     test_markdown_html(original, expected, false);
@@ -75,8 +75,8 @@ fn math_test_6() {
 
 $$y = \$ x$$
 "##;
-    let expected = r##"<p><span class="math inline">\$</span></p>
-<div class="math block">y = \$ x</div>
+    let expected = r##"<p><span class="math inline">$\$$</span></p>
+<div class="math block">$$y = \$ x$$</div>
 "##;
 
     test_markdown_html(original, expected, false);
